@@ -1,83 +1,70 @@
-*{margin: 0;padding: 0;box-sizing: border-box;}
-html, body {
-    min-height: 100%;
-}
-ul,li{
-    list-style: none;
-}
-a {
-    text-decoration: none;
-    color: #232323;
-}
+html,
 body {
-    font-family: "Microsoft YaHei";
-    font-size:14px;
-    color:#333;
+  height: 100%;
 }
 
-img {
-    border: none;
-    vertical-align: middle;
+body {
+  background-color: black;
+  color: #fff;
 }
 
-
-
-table {
-    border-collapse: collapse;
-    table-layout: fixed;
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-input, textarea {
-    outline: none;
-    border: none;
+.muyu {
+  position: relative;
+  height: 220px;
+  width: 220px;
+  margin: 0 auto;
 }
 
-textarea {
-    resize: none;
-    overflow: auto;
+.sf {
+  animation: suofang 0.2s;
 }
 
-.clearfix {
-    zoom: 1;
+.gongde {
+  position: absolute;
+  left: 114%;
+  top: 0%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 30px;
+  font-size: 21px;
+  z-index: 999;
 }
 
-.clearfix:after {
-    content: ".";
-    width: 0;
-    height: 0;
-    visibility: hidden;
-    display: block;
-    clear: both;
-    overflow:hidden;
+.gongdejiayi {
+  animation: textMove 0.5s;
 }
 
-.fl {
-    float: left
+/* 木鱼 */
+@keyframes suofang {
+  50% {
+    transform: scale(0.8, 0.8);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
-.fr {
-    float: right
+/* 字体向上消失 */
+@keyframes textMove {
+  from {
+    top: 0%;
+    opacity: 1;
+  }
+
+  to {
+    top: -4%;
+    opacity: 0;
+  }
 }
 
-.tl {
-    text-align: left;
-}
-
-.tc {
-    text-align: center
-}
-
-.tr {
-    text-align: right;
-}
-
-.ellipse {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.inline{
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
+[v-cloak] {
+  display: none;
 }
