@@ -7,51 +7,56 @@
     <title>电子木鱼</title>
     <link rel="stylesheet" href="./asset/css/default.css" />
     <link rel="shortcut icon" href="#" />
-    <style>
-    </style>
+    <style></style>
   </head>
   <body>
     <div id="app" v-cloak>
       <!-- 木鱼 -->
-      <div class="muyu" @click="chuang">
+      <div
+        class="muyu"
+        @mousedown="onClick"
+        @mouseup="deClick"
+        @touchstart="onClick"
+        @touchend="deClick"
+      >
         <!-- 功德 -->
-        <div class="gongde" :class="{gongdejiayi}">{{gongde}}</div>
-        <img :class="{sf}" src="./asset/img/muyu.jpg" />
+        <div class="gongde" v-for="index in gongdeQuantity">功德+1</div>
+        <div class="gongde" v-if="gongde">功德+1</div>
+        <img :class="{suo, fan}" src="./asset/img/muyu.jpg" />
       </div>
-      <audio ref="ding" src="./asset/audio/muyu.mp3"></audio>
     </div>
     <!-- 导入 Vue -->
     <script src="./asset/js/Vue.js"></script>
     <script>
-      let isclick = true;
       const App = {
         data() {
           return {
-            sf: false,
-            gongdejiayi: false,
-            gongde: "",
+            suo: false,
+            fan: false,
+            gongdeQuantity: 0,
+            gongde: false,
           };
         },
-        created() {
-        },
-        mounted() {
-        },
+        created() {},
+        mounted() {},
         methods: {
-          chuang() {
-            if (isclick) {
-              this.gongdejiayi = true;
-              isclick = false;
-              let ding = this.$refs.ding;
-              ding.play();
-              this.gongde = "功德+1";
-              this.sf = true;
-              setTimeout(()=> {
-                isclick = true;
-                this.sf = false;
-                this.gongde = "";
-                this.gongdejiayi = false;
-              }, 200);
+          onClick() {
+            console.log("onClick");
+            const music = new Audio("./asset/audio/muyu.mp3");
+            music.play();
+            this.suo = true;
+            this.fan = false;
+            this.gongdeQuantity++;
+            this.gongde = false;
+            if (this.gongdeQuantity === 3) {
+              this.gongdeQuantity = 1;
+              this.gongde = true; // 显示备用的
             }
+          },
+          deClick() {
+            console.log("deClick");
+            this.fan = true;
+            this.suo = false;
           },
         },
       };
