@@ -12,13 +12,7 @@
   <body>
     <div id="app" v-cloak>
       <!-- 木鱼 -->
-      <div
-        class="muyu"
-        @mousedown="onClick"
-        @mouseup="deClick"
-        @touchstart="onClick"
-        @touchend="deClick"
-      >
+      <div class="muyu" @mousedown="onClick" @mouseup="deClick">
         <!-- 功德 -->
         <div class="gongde" v-for="index in gongdeQuantity">功德+1</div>
         <div class="gongde" v-if="gongde">功德+1</div>
